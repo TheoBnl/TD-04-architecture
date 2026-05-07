@@ -1,0 +1,50 @@
+﻿<Window x:Class="Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Views"
+        mc:Ignorable="d"
+        Title="Animals" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" Margin="10" ItemsSource="{Binding Animals}" SelectedItem="{Binding Current}" MouseDoubleClick="Edit" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Picture}" Grid.Column="0" Height="48" />
+                        <Label Content="{Binding Name}" Grid.Column="1" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="120" />
+                        <Image Source="{Binding GenderPicture}" Grid.Column="2" HorizontalAlignment="Right" Height="48" />
+                    </Grid>
+                </DataTemplate>
+                
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Background="{x:Null}" Click="Add" >
+                <Image Source="Images/add.png" />
+            </Button>
+            <Button Grid.Row="1" Background="{x:Null}" Click="Remove">
+                <Image Source="Images/delete.png" />
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
